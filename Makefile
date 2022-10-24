@@ -1,7 +1,7 @@
 README.md: README.Rmd uw_covid_2022.csv
 	R -e "knitr::knit('$<')"
 
-uw_covid_2022.csv: scrape_data.py
+uw_covid_2022.csv: scrape_data.py last_update.txt
 	./scrape_data.py
 	R CMD BATCH reformat_data.R
 	grep '^2' uw_covid_2022.csv > tmp
